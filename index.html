@@ -6,97 +6,186 @@
     <title>Handicraft Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <nav>
-            <h1>BaBa handicrafts</h1>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<button class="cart-toggle" onclick="toggleCart()">🛒</button>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Handicrafts</h2>
-            <p>Discover unique handcrafted products made by skilled artisans.</p>
-            <a href="#" class="btn">Explore Collection</a>
-        </div>
-    </section>
+<!-- CART -->
+<div class="cart-box">
+    <h3>🛒 Cart (<span id="cart-count">0</span>)</h3>
 
-    <section class="products">
-        <h2>Featured Crafts</h2>
+    <div id="cart-items"></div>
 
-        <div class="product-grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="">
-                <h3>Wooden Art</h3>
-                <p>Beautiful handmade wooden decor.</p>
-            </div>
+    <p><b>Total: ₹<span id="cart-total">0</span></b></p>
 
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="">
-                <h3>Clay Pottery</h3>
-                <p>Traditional pottery crafted by experts.</p>
-            </div>
+    <input type="text" id="cust-name" placeholder="Your Name">
+    <input type="text" id="cust-address" placeholder="Your Address">
 
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="">
-                <h3>Handwoven Basket</h3>
-                <p>Eco-friendly handcrafted baskets.</p>
-            </div>
-        </div>
-    </section><section class="contact">
-    <h2>Contact Us</h2>
+    <button onclick="sendWhatsApp()">Order on WhatsApp</button>
+</div>
 
-    <div class="contact-info">
-        <div class="info-box">
-            <h3>📍 Aghwanpur, Moradabad</h3>
-            <p>244001 Aghwanpur, Moradabad, India</p>
-        </div>
+<header>
+    <nav>
+        <h1>BaBa handicrafts</h1>
+        <span id="user-name"></span>
 
-        <div class="info-box">
-            <h3>📞 Phone</h3>
-            <p>+91 7900790098</p>
-        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <div class="info-box">
-            <h3>✉ Ashumalik7900@gmail.com</h3>
-            <p>info@Babahandicrafts.com</p>
-        </div>
+<section class="hero">
+    <div class="hero-content">
+        <h2>Handicrafts</h2>
+        <p>Discover unique handcrafted products made by skilled artisans.</p>
+        <a href="#" class="btn">Explore Collection</a>
+    </div>
+</section>
+
+<h2 style="text-align:center; margin-top:40px;">Our Products</h2>
+
+<div class="products">
+
+    <div class="product-card">
+        <img src="product1.jpg">
+        <h3>Metal T light candles stand</h3>
+        <p>₹1499</p>
+        <button onclick="addToCart('Metal T light candles stand',1499,'product1.jpg')">Add to Cart</button>
     </div>
 
-    <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
+    <div class="product-card">
+        <img src="product2.jpg">
+        <h3>German silver mirror tray</h3>
+        <p>₹1799</p>
+        <button onclick="addToCart('German silver mirror tray',1799,'product2.jpg')">Add to Cart</button>
+    </div>
 
-    <footer>
-        <footer>
+    <div class="product-card">
+        <img src="product3.jpg">
+        <h3>German silver photo frame</h3>
+        <p>₹899</p>
+        <button onclick="addToCart('German silver photo frame',899,'product3.jpg')">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="product4.jpg">
+        <h3>Moon star serving tray</h3>
+        <p>₹999</p>
+        <button onclick="addToCart('Moon star serving tray',999,'product4.jpg')">Add to Cart</button>
+    </div>
+
+</div>
+
+<footer>
     <div class="footer-content">
         <h3>BaBa Handicrafts</h3>
-
         <p>Email: info@Babahandicrafts.com</p>
         <p>Phone: +91 7900790098</p>
         <p>Address: Aghwanpur, Moradabad, India</p>
-
-        <div class="social-links">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">+91 7900790098</a>
-        </div>
-
-        <p class="copyright">
-            © 2026 BaBa Handicrafts. All Rights Reserved.
-        </p>
     </div>
 </footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCart(){
+    document.getElementById("cart-count").innerText =
+        cart.reduce((sum,item)=>sum + item.qty,0);
+
+    let cartItems = document.getElementById("cart-items");
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item, index)=>{
+        total += item.price * item.qty;
+
+        cartItems.innerHTML += `
+        <div style="display:flex; gap:10px; margin:10px 0;">
+            <img src="${item.img}" width="50">
+            <div>
+                ${item.name}<br>
+                ₹${item.price} × ${item.qty}<br>
+
+                <button onclick="decreaseQty(${index})">➖</button>
+                <button onclick="increaseQty(${index})">➕</button>
+                <button onclick="removeItem(${index})">❌</button>
+            </div>
+        </div>`;
+    });
+
+    document.getElementById("cart-total").innerText = total;
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function addToCart(name, price, img){
+    let existing = cart.find(item => item.name === name);
+
+    if(existing){
+        existing.qty++;
+    } else {
+        cart.push({name, price, img, qty:1});
+    }
+
+    updateCart();
+}
+
+function increaseQty(i){
+    cart[i].qty++;
+    updateCart();
+}
+
+function decreaseQty(i){
+    cart[i].qty--;
+    if(cart[i].qty <= 0) cart.splice(i,1);
+    updateCart();
+}
+
+function removeItem(i){
+    cart.splice(i,1);
+    updateCart();
+}
+
+function sendWhatsApp(){
+    if(cart.length === 0){
+        alert("Cart is empty");
+        return;
+    }
+
+    let name = document.getElementById("cust-name").value;
+    let address = document.getElementById("cust-address").value;
+
+    if(name === "" || address === ""){
+        alert("Please enter name & address");
+        return;
+    }
+
+    let message = `Hello, I want to order:%0AName: ${name}%0AAddress: ${address}%0A%0A`;
+
+    cart.forEach((item, index)=>{
+        message += `${index+1}. ${item.name} - ₹${item.price} × ${item.qty}%0A`;
+    });
+
+    let total = cart.reduce((sum,item)=>sum + (item.price * item.qty),0);
+    message += `%0ATotal: ₹${total}`;
+
+    let phone = "917900790098";
+    let url = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(url, "_blank");
+}
+
+function toggleCart(){
+    document.querySelector(".cart-box").classList.toggle("active");
+}
+
+updateCart();
+</script>
 
 </body>
 </html>
