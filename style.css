@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 *{
     margin:0;
     padding:0;
@@ -16,6 +20,7 @@ header{
     padding:20px 50px;
     position:sticky;
     top:0;
+    z-index: 999; /* Isse header hamesha baaki content ke upar rahega */
 }
 
 nav{
@@ -76,6 +81,12 @@ nav a:hover{
     text-decoration:none;
     border-radius:30px;
     font-weight:bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
 }
 
 /* PRODUCTS SECTION */
@@ -113,14 +124,22 @@ nav a:hover{
 
 .product-card p{
     margin-bottom:10px;
+    font-weight: bold;
 }
 
 .product-card button{
     background:#d4a373;
+    color: #000;
     border:none;
-    padding:10px;
+    padding:10px 15px;
     border-radius:8px;
+    font-weight: bold;
     cursor:pointer;
+    transition: 0.3s;
+}
+
+.product-card button:hover{
+    background: #fff;
 }
 
 /* FEATURED SECTION */
@@ -198,14 +217,28 @@ nav a:hover{
     background:#242424;
     color:white;
 }
-
 .contact-form button{
     padding:15px;
-    background:#d4a373;
+    background:#d4a373; 
+    color: #000; 
     border:none;
     border-radius:8px;
     font-weight:bold;
+    font-size: 16px;
     cursor:pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.2);
+}
+
+.contact-form button:hover{
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.contact-form button:active{
+    transform: translateY(0);
 }
 
 /* FOOTER */
@@ -231,28 +264,46 @@ footer{
 
 /* ===== CLEAN CART (FIXED) ===== */
 
-.cart-toggle{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#d4a373;
-    border:none;
-    padding:15px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:20px;
-    z-index:1000;
+.cart-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #d4a373;
+    color: #000;
+    /* Fixed width hata kar auto aur padding di hai taaki text andar fit rahe */
+    width: auto; 
+    min-width: 120px;
+    padding: 12px 20px; 
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+    white-space: nowrap; /* Isse text kabhi break hokar niche nahi jayega */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cart-toggle:hover {
+    transform: scale(1.05);
+    background: #fff;
 }
 
 .cart-box{
     position:fixed;
     right:20px;
-    bottom:80px;
-    width:260px;
+    bottom:85px;
+    width:280px; /* Thoda wide kiya taaki content fit aaye */
     background:#1f1f1f;
     padding:15px;
     border-radius:12px;
     box-shadow:0 10px 25px rgba(0,0,0,0.6);
+    z-index: 1000;
 
     transform:translateY(100px) scale(0.8);
     opacity:0;
@@ -273,21 +324,556 @@ footer{
     padding:8px;
     border:none;
     border-radius:5px;
+    background: #2d2d2d;
+    color: white;
 }
 
 #cart-items{
-    max-height:150px;
+    max-height:200px; /* Thodi space badha di items ke liye */
     overflow-y:auto;
+    margin-bottom: 10px;
 }
 
 .cart-box button{
     margin:3px;
-    padding:5px 8px;
+    padding:5px 10px;
     border:none;
     border-radius:5px;
     cursor:pointer;
+    font-weight: bold;
+}
+
+/* Order on WhatsApp Button Styling */
+.cart-box button[onclick="sendWhatsApp()"] {
+    background: #25D366; /* WhatsApp Green Color */
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.cart-box button[onclick="sendWhatsApp()"]:hover {
+    background: #20ba5a;
 }
 
 .cart-box img{
-    border:2px solid #333;
+    border:1px solid #333;
+    border-radius: 5px;
 }
+/* ===== PRODUCT MODAL POPUP CSS ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px); /* Background dhundla karne ke liye */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #1f1f1f;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    border: 1px solid #333;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    color: #d4a373;
+}
+
+.modal-body {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Mobile screen par content upar-niche krne ke liye */
+}
+
+.modal-img-container {
+    flex: 1;
+    min-width: 250px;
+}
+
+.modal-img-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-info h2 {
+    color: #d4a373;
+    margin-bottom: 15px;
+}
+
+.modal-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+#modal-desc {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+#modal-add-btn {
+    background: #d4a373;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#modal-add-btn:hover {
+    background: #fff;
+}
+
+.announcement-bar {
+    background: #d4a373;
+    color: #000;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.search-container {
+    max-width: 500px;
+    margin: 40px auto 10px auto;
+    padding: 0 20px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 20px;
+    background: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#search-input:focus {
+    border-color: #d4a373;
+    box-shadow: 0 0 10px rgba(212, 163, 115, 0.3);
+}
+
+.testimonials {
+    padding: 80px 50px;
+    background: #181818;
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: #d4a373;
+    margin-bottom: 40px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.review-card {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    border-color: #d4a373;
+    transform: translateY(-5px);
+}
+
+.stars {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.review-text {
+    font-style: italic;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.review-card h4 {
+    color: #d4a373;
+    font-weight: bold;
+}
+
+.qty-select-container {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.qty-select-container select {
+    background: #2d2d2d;
+    color: #fff;
+    border: 1px solid #d4a373;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 90px; 
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.05);
+    background: #20ba5a;
+}
+
+.chat-tooltip {
+    display: none;
+    position: absolute;
+    right: 110%;
+    background: #1f1f1f;
+    color: #d4a373;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    border: 1px solid #333;
+}
+
+.whatsapp-float:hover .chat-tooltip {
+    display: block;
+}
+
+.order-steps-section {
+    padding: 60px 50px;
+    background: #121212;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.step-card {
+    background: #1f1f1f;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #2d2d2d;
+    position: relative;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    border-color: #d4a373;
+}
+
+.step-num {
+    width: 40px;
+    height: 40px;
+    background: #d4a373;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3);
+}
+
+.step-card h4 {
+    color: #d4a373;
+    margin-bottom: 10px;
+}
+
+.step-card p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.cart-toast {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #d4a373; 
+    color: #000;
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    z-index: 2000; 
+    transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce effect */
+    pointer-events: none;
+}
+
+.cart-toast.show {
+    top: 30px;
+}
+
+#modal-sample-btn {
+    background: #111111;
+    color: #d4a373; 
+    border: 1px solid #d4a373; 
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#modal-sample-btn:hover {
+    background: #d4a373;
+    color: #000; 
+    box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
+}
+
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.modal-btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+@media (max-width: 480px) {
+    .modal-btn-group {
+        flex-direction: column; 
+    }
+    #modal-sample-btn {
+        margin-left: 0 !important; 
+    }
+}
+.modal-btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#modal-add-btn {
+    background: #d4a373;
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    transition: 0.3s;
+}
+
+#modal-sample-btn {
+    background: #111111;
+    color: #d4a373;
+    border: 1px solid #d4a373;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    transition: 0.3s;
+}
+
+#modal-sample-btn:hover {
+    background: #d4a373;
+    color: #000;
+}
+
+@media (max-width: 480px) {
+    .modal-btn-group {
+        flex-direction: column; /* Mobile me ek ke niche ek automatic set */
+    }
+}
+
+/* ===== B2B TRUST BADGES BANNER ===== */
+.trust-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto 20px auto;
+    padding: 0 20px;
+}
+
+.badge-card {
+    background: #1a1a1a;
+    border: 1px solid #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.badge-card:hover {
+    border-color: #d4a373; /* Hover par gold border animation */
+    transform: translateY(-5px);
+}
+
+.badge-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.badge-card h4 {
+    color: #d4a373; /* Gold Title */
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.badge-card p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Mobile responsive alignment check */
+@media (max-width: 768px) {
+    .trust-banner {
+        margin: 20px auto;
+        gap: 15px;
+    }
+}
+
+/* ===== PREMIUM FILTER BUTTONS ===== */
+.filter-btn {
+    background: #111;
+    color: #aaa;
+    border: 1px solid #333;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: #d4a373;
+    color: #000;
+    border-color: #d4a373;
+    box-shadow: 0 4px 10px rgba(212, 163, 115, 0.2);
+}
+
+/* ===== BULK CART INTERNAL BUTTONS FIX ===== */
+.cart-action-btn {
+    background: #2d2d2d;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cart-action-btn:hover {
+    background: #d4a373;
+    color: #000;
+    border-color: #d4a373;
+}
+
+.cart-delete-btn {
+    background: transparent;
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b22;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: auto; /* Isse delete button automatic right side chipak jayega */
+    transition: 0.2s ease;
+}
+
+.cart-delete-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+    border-color: #ff6b6b;
+}
+
