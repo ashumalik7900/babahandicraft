@@ -23,10 +23,9 @@
     <nav>
         <h1>BaBa Handicrafts <span>B2B Wholesale</span></h1>
         <ul>
-            <!-- TEENO LINKS AB EKDAM SAME UNIFORM CSS LOOK ME HAIN -->
-            <li><a href="#">Home</a></li>
-            <li><a href="#bulk-products">Wholesale Catalog</a></li>
-            <li><a href="#inquiry-section">Inquiry</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#bulk-products">Wholesale Catalog</a></li>
+            <li><a href="index.html#inquiry-section">Inquiry</a></li>
         </ul>
     </nav>
 </header>
@@ -77,26 +76,15 @@
     <input type="text" id="cust-name" placeholder="Company/Your Name">
     <input type="text" id="cust-gst" placeholder="GST Number (Optional)">
     <input type="text" id="cust-address" placeholder="Delivery Address & City">
+    
     <p style="font-size: 11px; color: #aaa; text-align: center; margin: 10px 0 5px 0; line-height: 1.4;">
         🚚 Bulk orders are dispatched via trusted transport within 3-5 working days.
     </p>
+    
     <button onclick="sendWhatsAppBulk()" id="whatsapp-btn">Submit Wholesale Order</button>
-</div>
 
-<!-- MAIN HERO BANNER (SEARCH BAR KE SAATH) -->
-<section class="hero">
-    <div class="hero-content">
-        <h2>Wholesale Handicrafts</h2>
-        <p>Premium Metal, Brass & Silverware Directly From Moradabad Artisans at Factory Prices.</p>
-        <div style="margin-bottom: 25px;">
-            <a href="#bulk-products" class="btn" style="display: inline-block;">View Wholesale Prices</a>
-            <a href="https://wa.me/917900790098?text=Hi%2C%20I%20want%20the%20latest%20BaBa%20Handicrafts%20wholesale%20price%20list%20and%20catalog." target="_blank" class="btn" style="background: #fff; color: #000; margin-left: 10px; display: inline-block;">📋 Request Price List</a>
-        </div>
-        
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="🔍 Search wholesale items (e.g., silver, tray)..." onkeyup="filterProducts()">
-        </div>
-    </div>
+    <a href="cart.html" class="checkout-btn" style="text-align: center; display: block; margin-top: 10px; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid transparent; transition: 0.3s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#d4a373'">🛒 Review Order & Full Checkout</a>
+</div>
 </section>
 
 <!-- B2B TRUST BADGES BANNER (FIXED BLOCK CLOSING) -->
@@ -128,72 +116,36 @@
 
 <div class="products">
 
-    <!-- PRODUCT 1 -->
     <div class="product-card" data-name="metal t light candles stand" data-category="candle">
-        <img src="product1.jpg" alt="Metal T light candles stand" onclick="openModal('Metal T light candles stand', 699, 'product1.jpg', 'Moradabad\'s classic hand-carved brass design. Perfect for festive decorations and premium gifting vibes.', 'qty-p1')" style="cursor:pointer;">
-        <h3 onclick="openModal('Metal T light candles stand', 699, 'product1.jpg', 'Moradabad\'s classic hand-carved brass design. Perfect for festive decorations and premium gifting vibes.', 'qty-p1')" style="cursor:pointer;">Metal T light candles stand</h3>
+        <img src="product1.jpg" alt="Metal T light candles stand" onclick="window.location.href='product.html?name=Metal T light candles stand&price=699&img=product1.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=Metal T light candles stand&price=699&img=product1.jpg'" style="cursor:pointer;">Metal T light candles stand</h3>
         <p>Wholesale Price: ₹699</p>
         
-        <div class="qty-select-container">
-            <label>Select Qty: </label>
-            <select id="qty-p1">
-                <option value="10">10 Pcs</option>
-                <option value="50">50 Pcs</option>
-                <option value="100">100 Pcs</option>
-            </select>
-        </div>
-        <button onclick="addSelectedToBulkCart('Metal T light candles stand', 699, 'qty-p1', 'product1.jpg')">Add to Bulk Cart</button>
+        <a href="product.html?name=Metal T light candles stand&price=699&img=product1.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
     </div>
 
-    <!-- PRODUCT 2 -->
     <div class="product-card" data-name="german silver mirror tray" data-category="silver">
-        <img src="product2.jpg" alt="German silver mirror tray" onclick="openModal('German silver mirror tray', 899, 'product2.jpg', 'High-quality German silver tray with a flawless mirror base. Ideal for serving or home decor.', 'qty-p2')" style="cursor:pointer;">
-        <h3 onclick="openModal('German silver mirror tray', 899, 'product2.jpg', 'High-quality German silver tray with a flawless mirror base. Ideal for serving or home decor.', 'qty-p2')" style="cursor:pointer;">German silver mirror tray</h3>
+        <img src="product2.jpg" alt="German silver mirror tray" onclick="window.location.href='product.html?name=German silver mirror tray&price=899&img=product2.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=German silver mirror tray&price=899&img=product2.jpg'" style="cursor:pointer;">German silver mirror tray</h3>
         <p>Wholesale Price: ₹899</p>
         
-        <div class="qty-select-container">
-            <label>Select Qty: </label>
-            <select id="qty-p2">
-                <option value="10">10 Pcs</option>
-                <option value="50">50 Pcs</option>
-                <option value="100">100 Pcs</option>
-            </select>
-        </div>
-        <button onclick="addSelectedToBulkCart('German silver mirror tray', 899, 'qty-p2', 'product2.jpg')">Add to Bulk Cart</button>
+        <a href="product.html?name=German silver mirror tray&price=899&img=product2.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
     </div>
 
-    <!-- PRODUCT 3 -->
     <div class="product-card" data-name="german silver photo frame" data-category="silver">
-        <img src="product3.jpg" alt="German silver photo frame" onclick="openModal('German silver photo frame', 450, 'product3.jpg', 'Elegant antique-finish photo frame to keep your precious memories safe in royal style.', 'qty-p3')" style="cursor:pointer;">
-        <h3 onclick="openModal('German silver photo frame', 450, 'product3.jpg', 'Elegant antique-finish photo frame to keep your precious memories safe in royal style.', 'qty-p3')" style="cursor:pointer;">German silver photo frame</h3>
+        <img src="product3.jpg" alt="German silver photo frame" onclick="window.location.href='product.html?name=German silver photo frame&price=450&img=product3.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=German silver photo frame&price=450&img=product3.jpg'" style="cursor:pointer;">German silver photo frame</h3>
         <p>Wholesale Price: ₹450</p>
         
-        <div class="qty-select-container">
-            <label>Select Qty: </label>
-            <select id="qty-p3">
-                <option value="10">10 Pcs</option>
-                <option value="50">50 Pcs</option>
-                <option value="100">100 Pcs</option>
-            </select>
-        </div>
-        <button onclick="addSelectedToBulkCart('German silver photo frame', 450, 'qty-p3', 'product3.jpg')">Add to Bulk Cart</button>
+        <a href="product.html?name=German silver photo frame&price=450&img=product3.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
     </div>
 
-    <!-- PRODUCT 4 -->
     <div class="product-card" data-name="moon star serving tray" data-category="tray">
-        <img src="product4.jpg" alt="Moon star serving tray" onclick="openModal('Moon star serving tray', 499, 'product4.jpg', 'Exquisite moon and star cut-out artwork tray, perfect for dry fruits and festive hosting.', 'qty-p4')" style="cursor:pointer;">
-        <h3 onclick="openModal('Moon star serving tray', 499, 'product4.jpg', 'Exquisite moon and star cut-out artwork tray, perfect for dry fruits and festive hosting.', 'qty-p4')" style="cursor:pointer;">Moon star serving tray</h3>
+        <img src="product4.jpg" alt="Moon star serving tray" onclick="window.location.href='product.html?name=Moon star serving tray&price=499&img=product4.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=Moon star serving tray&price=499&img=product4.jpg'" style="cursor:pointer;">Moon star serving tray</h3>
         <p>Wholesale Price: ₹499</p>
         
-        <div class="qty-select-container">
-            <label>Select Qty: </label>
-            <select id="qty-p4">
-                <option value="10">10 Pcs</option>
-                <option value="50">50 Pcs</option>
-                <option value="100">100 Pcs</option>
-            </select>
-        </div>
-        <button onclick="addSelectedToBulkCart('Moon star serving tray', 499, 'qty-p4', 'product4.jpg')">Add to Bulk Cart</button>
+        <a href="product.html?name=Moon star serving tray&price=499&img=product4.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
     </div>
 
 </div>
@@ -218,6 +170,82 @@
             <h4>– Mohd. Aadil</h4>
         </div>
     </div>
+    <!-- ================= 🛡️ PREMIUM B2B TRUST BADGES (100% FIXED) ================= -->
+<div class="b2b-trust-section" style="max-width: 1100px; margin: 60px auto 20px auto; padding: 0 20px; text-align: center;">
+    
+    <div class="trust-badges-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+        
+        <!-- BADGE 1: FREE SHIPPING -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">🚚</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Ready To Free Shipping</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">On orders above ₹9,999 via trusted transport.</p>
+        </div>
+
+        <!-- BADGE 2: COD -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">💵</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Available Cash On Delivery</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">Pay a small advance, rest on delivery at your shop.</p>
+        </div>
+
+        <!-- BADGE 3: CUSTOM DESIGN -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">✏️</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Design Your Product</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">Send your custom photos/sizes for custom manufacturing.</p>
+        </div>
+
+        <!-- BADGE 4: MADE IN INDIA -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">🇮🇳</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Made In India</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">100% authentic handcrafted art from Moradabad.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🔥 POWERFUL POP-UP SCRIPT -->
+<script>
+function triggerPop(element) {
+    // Card ko bada jhatka do (Pop effect)
+    element.style.transform = "scale(1.1) translateY(-8px)";
+    element.style.borderColor = "#d4a373";
+    element.style.backgroundColor = "#1d1d1d";
+    
+    // Emoji ko zoom aur rotate karo
+    const emoji = element.querySelector('.badge-emoji');
+    if(emoji) {
+        emoji.style.transform = "scale(1.4) rotate(15deg)";
+    }
+    
+    // 200ms ke andar wapas thoda bouncy normal state par lao
+    setTimeout(() => {
+        element.style.transform = "scale(1.02) translateY(-3px)";
+        element.style.backgroundColor = "#161616";
+        if(emoji) {
+            emoji.style.transform = "scale(1.15) rotate(0deg)";
+        }
+    }, 200);
+}
+</script>
 </section>
 
 <!-- CONTACT SECTION -->
@@ -264,12 +292,15 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <h3>BaBa Handicrafts B2B</h3>
-        <p>Email: b2b@Babahandicrafts.com | Phone: +91 7900790098</p>
-        <p>Factory Address: Aghwanpur, Moradabad, India</p>
+<footer style="text-align: center; padding: 40px 20px; background: #111; border-top: 1px solid #2d2d2d; color: #aaa; font-size: 13px;">
+    <!-- QUICK B2B LINKS -->
+    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 25px;">
+        <a href="about.html" style="color: #d4a373; text-decoration: none; font-weight: bold; font-size: 14px;">ℹ️ About Our Factory</a>
+        <a href="terms.html" style="color: #d4a373; text-decoration: none; font-weight: bold; font-size: 14px;">🛡️ Terms & Shipping Policy</a>
     </div>
+    
+    <p style="margin: 10px 0 5px 0;">&copy; 2026 BaBa Handicrafts B2B Wholesale. All Rights Reserved.</p>
+    <p style="color: #666; margin: 0;">Factory Address: Aghwanpur, Moradabad, Uttar Pradesh, India</p>
 </footer>
 
 <script>
@@ -545,4 +576,3 @@ function sendWhatsAppBulk() {
 </div>
 </body>
 </html>
-
