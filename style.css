@@ -476,13 +476,36 @@ footer{
 }
 
 .announcement-bar {
-    background: #d4a373;
-    color: #000;
-    text-align: center;
-    padding: 8px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    background: #d4a373; /* Premium Gold Background */
+    color: #000; /* Dark Black Text */
+    padding: 12px 0; /* Padding bada kar diya taaki patti moti dikhe */
+    font-size: 16px; /* 🔥 Font size 13px se badha kar 16px kar diya */
+    font-weight: 800; /* Ekdum thick aur bold look */
+    letter-spacing: 0.5px; /* Aksharon ke beech thoda gap */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Niche halki shadow taaki utha hua dikhe */
+}
+
+/* Animation control */
+.announcement-bar span {
+    display: inline-block;
+    position: relative;
+    animation: bounceText 12s linear infinite alternate; /* Size bada hai toh speed thodi smooth (12s) rakhi hai */
+}
+
+/* Takra kar wapas aane ka system */
+@keyframes bounceText {
+    0% {
+        left: 0%;
+        transform: translateX(0%);
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+    }
 }
 
 .search-container {
@@ -876,4 +899,128 @@ footer{
     color: #fff;
     border-color: #ff6b6b;
 }
+/* ===== 📱 COMPLETE MOBILE RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+    /* Header & Navigation Fix */
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    header nav h1 {
+        font-size: 20px;
+    }
+
+    header nav ul {
+        gap: 15px;
+        justify-content: center;
+        padding: 0;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    /* Hero Section Details */
+    .hero {
+        padding: 60px 15px;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero .btn {
+        display: block !important;
+        margin: 10px 0 !important;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* How it Works - Steps Container */
+    .steps-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .step-card {
+        width: 100% !important;
+    }
+
+    /* Trust Banner Grid */
+    .trust-banner {
+        grid-template-columns: 1fr !important; /* Mobile me single column */
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    /* Products Grid Fix */
+    .products {
+        grid-template-columns: 1fr !important; /* Ek line me ek hi product bada dikhega code smooth karne ke liye */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .product-card {
+        padding: 15px;
+    }
+
+    /* Bulk Cart Floating Box Fix */
+    .cart-box {
+        width: 90% !important;
+        right: 5% !important;
+        left: 5% !important;
+        bottom: 80px;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    /* Testimonials/Reviews Grid */
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    /* Modal Popup Fix */
+    .modal-content {
+        width: 95% !important;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .modal-body {
+        flex-direction: column !important; /* Photo upar aur buttons/text niche */
+        gap: 15px;
+    }
+
+    .modal-img-container img {
+        max-height: 250px;
+    }
+
+    .modal-btn-group {
+        flex-direction: column; /* Model buttons ek ke niche ek */
+        gap: 10px;
+    }
+}
+/* ===== 🖱️ HOVER EFFECTS FOR TRUST CARDS ===== */
+.trust-pop-card:hover {
+    border-color: #d4a373 !important;
+    background: #161616 !important;
+    transform: translateY(-3px);
+}
+
+.trust-pop-card:hover .badge-emoji {
+    transform: scale(1.15);
+}
+
 
