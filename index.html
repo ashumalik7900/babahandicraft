@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaBa Handicrafts - Wholesale & Bulk Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+    <span>✨ B2B Wholesale Store: Free Shipping Across India on Orders Above ₹9999! ✨</span>
+</div>
+
+<!-- FLOATING WHATSAPP CHAT BUBBLE -->
+<a href="https://wa.me/917900790098?text=Hi,%20I%20have%20a%20wholesale%20query%20regarding%20handicrafts." target="_blank" class="whatsapp-float">
+    <span class="chat-tooltip">Direct Support Contact</span>
+    💬 Live Chat
+</a>
+
+<header>
+    <nav>
+        <h1>BaBa Handicrafts <span>B2B Wholesale</span></h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#bulk-products">Wholesale Catalog</a></li>
+            <li><a href="index.html#inquiry-section">Inquiry</a></li>
+            
+            <li>
+                <button onclick="openLoginModal()" id="nav-login-btn" style="background: #d4a373; color: #000; border: none; padding: 6px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; transition: 0.3s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#d4a373'">
+                    👤 Login / Sign Up
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- WHOLESALE ORDER PROGRESS STEPS -->
+<section class="order-steps-section" style="padding: 40px 50px; background: #121212;">
+    <h2 style="text-align: center; color: #d4a373; margin-bottom: 30px; font-size: 24px;">How Wholesale Ordering Works</h2>
+    <!-- PREMIUM CATEGORY FILTERS -->
+<div class="category-filters" style="text-align: center; margin-bottom: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 0 20px;">
+    <button class="filter-btn active" onclick="filterCategory('all')">All Items</button>
+    <button class="filter-btn" onclick="filterCategory('silver')">German Silver</button>
+    <button class="filter-btn" onclick="filterCategory('candle')">Candle Stands</button>
+    <button class="filter-btn" onclick="filterCategory('tray')">Serving Trays</button>
+</div>
+    <div class="steps-container">
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <h4>Add to Bulk Cart</h4>
+            <p>Select products in lots of 10, 50, or 100 pieces.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <h4>Submit on WhatsApp</h4>
+            <p>Send details instantly with your delivery address.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <h4>Get Proforma Invoice</h4>
+            <p>We send the final bill with transport freight charges.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <h4>Secure Dispatch</h4>
+            <p>Goods are carefully packed & dispatched from Moradabad.</p>
+        </div>
+    </div>
+</section>
+
+<button class="cart-toggle" onclick="toggleCart()">🛒 Bulk Cart</button>
+
+<div class="cart-box">
+    <h3>🛒 Bulk Cart (<span id="cart-count">0</span> Items)</h3>
+
+    <div id="cart-items"></div>
+
+    <p><b>Subtotal: ₹<span id="cart-total">0</span></b></p>
+
+    <input type="text" id="cust-name" placeholder="Company/Your Name">
+    <input type="text" id="cust-gst" placeholder="GST Number (Optional)">
+    <input type="text" id="cust-address" placeholder="Delivery Address & City">
+    
+    <p style="font-size: 11px; color: #aaa; text-align: center; margin: 10px 0 5px 0; line-height: 1.4;">
+        🚚 Bulk orders are dispatched via trusted transport within 3-5 working days.
+    </p>
+    
+    <button onclick="sendWhatsAppBulk()" id="whatsapp-btn">Submit Wholesale Order</button>
+
+    <a href="cart.html" class="checkout-btn" style="text-align: center; display: block; margin-top: 10px; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid transparent; transition: 0.3s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#d4a373'">🛒 Review Order & Full Checkout</a>
+</div>
+</section>
+
+<!-- B2B TRUST BADGES BANNER (FIXED BLOCK CLOSING) -->
+<section class="trust-banner">
+    <div class="badge-card">
+        <div class="badge-icon">🌟</div>
+        <h4>Authentic Craft</h4>
+        <p>100% Premium Metal & Brass Directly From Moradabad Artisans</p>
+    </div>
+    <div class="badge-card">
+        <div class="badge-icon">🏭</div>
+        <h4>Direct Factory Rates</h4>
+        <p>No Middlemen. Pure Wholesale & Manufacturing Prices</p>
+    </div>
+    <div class="badge-card">
+        <div class="badge-icon">📦</div>
+        <h4>Secure Bulk Packing</h4>
+        <p>Heavy-duty Bubble Wrap & Wooden Box Packaging for Safe Transit</p>
+    </div>
+    <div class="badge-card">
+        <div class="badge-icon">📄</div>
+        <h4>GST Invoice</h4>
+        <p>Proper B2B Tax Invoice to Claim Your Input Tax Credit (ITC)</p>
+    </div>
+</section>
+
+<h2 style="text-align:center; margin-top:40px;" id="bulk-products">Wholesale Catalog</h2>
+<p style="text-align:center; color: #aaa; margin-bottom: 20px;">*Click product name or image to zoom/view details.</p>
+
+<div class="products">
+
+    <div class="product-card" data-name="metal t light candles stand" data-category="candle">
+        <img src="product1.jpg" alt="Metal T light candles stand" onclick="window.location.href='product.html?name=Metal T light candles stand&price=699&img=product1.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=Metal T light candles stand&price=699&img=product1.jpg'" style="cursor:pointer;">Metal T light candles stand</h3>
+        <p>Wholesale Price: ₹699</p>
+        
+        <a href="product.html?name=Metal T light candles stand&price=699&img=product1.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
+    </div>
+
+    <div class="product-card" data-name="german silver mirror tray" data-category="silver">
+        <img src="product2.jpg" alt="German silver mirror tray" onclick="window.location.href='product.html?name=German silver mirror tray&price=899&img=product2.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=German silver mirror tray&price=899&img=product2.jpg'" style="cursor:pointer;">German silver mirror tray</h3>
+        <p>Wholesale Price: ₹899</p>
+        
+        <a href="product.html?name=German silver mirror tray&price=899&img=product2.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
+    </div>
+
+    <div class="product-card" data-name="german silver photo frame" data-category="silver">
+        <img src="product3.jpg" alt="German silver photo frame" onclick="window.location.href='product.html?name=German silver photo frame&price=450&img=product3.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=German silver photo frame&price=450&img=product3.jpg'" style="cursor:pointer;">German silver photo frame</h3>
+        <p>Wholesale Price: ₹450</p>
+        
+        <a href="product.html?name=German silver photo frame&price=450&img=product3.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
+    </div>
+
+    <div class="product-card" data-name="moon star serving tray" data-category="tray">
+        <img src="product4.jpg" alt="Moon star serving tray" onclick="window.location.href='product.html?name=Moon star serving tray&price=499&img=product4.jpg'" style="cursor:pointer;">
+        <h3 onclick="window.location.href='product.html?name=Moon star serving tray&price=499&img=product4.jpg'" style="cursor:pointer;">Moon star serving tray</h3>
+        <p>Wholesale Price: ₹499</p>
+        
+        <a href="product.html?name=Moon star serving tray&price=499&img=product4.jpg" style="display: block; text-align: center; background: #d4a373; color: #000; padding: 10px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 10px;">View Product</a>
+    </div>
+
+</div>
+
+<!-- REVIEWS SECTION -->
+<section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonials-grid">
+        <div class="review-card">
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"Moradabad ki craft ka koi jawaab nahi! The German silver mirror tray looks extremely premium. Safely delivered to Delhi."</p>
+            <h4>– Rajesh Kumar</h4>
+        </div>
+        <div class="review-card">
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"Ordered 50 pairs of T-light stands for a family function. The bulk pricing and WhatsApp coordination was fantastic."</p>
+            <h4>– Priya Sharma</h4>
+        </div>
+        <div class="review-card">
+            <p class="stars">⭐⭐⭐⭐⭐</p>
+            <p class="review-text">"Finishing is superb. Truly authentic handcrafted products. Highly recommended for gifting purposes!"</p>
+            <h4>– Mohd. Aadil</h4>
+        </div>
+    </div>
+    <!-- ================= 🛡️ PREMIUM B2B TRUST BADGES (100% FIXED) ================= -->
+<div class="b2b-trust-section" style="max-width: 1100px; margin: 60px auto 20px auto; padding: 0 20px; text-align: center;">
+    
+    <div class="trust-badges-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+        
+        <!-- BADGE 1: FREE SHIPPING -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">🚚</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Ready To Free Shipping</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">On orders above ₹9,999 via trusted transport.</p>
+        </div>
+
+        <!-- BADGE 2: COD -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">💵</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Available Cash On Delivery</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">Pay a small advance, rest on delivery at your shop.</p>
+        </div>
+
+        <!-- BADGE 3: CUSTOM DESIGN -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">✏️</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Design Your Product</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">Send your custom photos/sizes for custom manufacturing.</p>
+        </div>
+
+        <!-- BADGE 4: MADE IN INDIA -->
+        <div class="trust-pop-card" 
+             onclick="triggerPop(this)" 
+             onmouseover="this.style.borderColor='#d4a373'; this.style.background='#161616'; this.style.transform='translateY(-3px)';" 
+             onmouseout="this.style.borderColor='#2d2d2d'; this.style.background='#111'; this.style.transform='translateY(0)';"
+             style="background: #111; border: 1px solid #2d2d2d; padding: 25px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+            <div class="badge-emoji" style="font-size: 36px; margin-bottom: 12px; transition: transform 0.2s ease; display: inline-block;">🇮🇳</div>
+            <h4 style="color: #d4a373; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase;">Made In India</h4>
+            <p style="color: #777; font-size: 12px; margin: 0;">100% authentic handcrafted art from Moradabad.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🔥 POWERFUL POP-UP SCRIPT -->
+<script>
+function triggerPop(element) {
+    // Card ko bada jhatka do (Pop effect)
+    element.style.transform = "scale(1.1) translateY(-8px)";
+    element.style.borderColor = "#d4a373";
+    element.style.backgroundColor = "#1d1d1d";
+    
+    // Emoji ko zoom aur rotate karo
+    const emoji = element.querySelector('.badge-emoji');
+    if(emoji) {
+        emoji.style.transform = "scale(1.4) rotate(15deg)";
+    }
+    
+    // 200ms ke andar wapas thoda bouncy normal state par lao
+    setTimeout(() => {
+        element.style.transform = "scale(1.02) translateY(-3px)";
+        element.style.backgroundColor = "#161616";
+        if(emoji) {
+            emoji.style.transform = "scale(1.15) rotate(0deg)";
+        }
+    }, 200);
+}
+</script>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="inquiry-section">
+    <h2>Bulk Order Inquiry</h2>
+    <div class="contact-info">
+        <div class="info-box">
+            <h3>📍 Address</h3>
+            <p>Aghwanpur, Moradabad, India</p>
+        </div>
+        <div class="info-box">
+            <h3>📞 Phone / WhatsApp</h3>
+            <p>+91 7900790098</p>
+        </div>
+    </div>
+
+    <form class="contact-form" onsubmit="sendInquiry(event)">
+        <input type="text" id="inq-name" placeholder="Your Name" required>
+        <input type="email" id="inq-email" placeholder="Your Email" required>
+        <textarea id="inq-msg" rows="5" placeholder="Which product are you looking for in bulk?" required></textarea>
+        <button type="submit">Send Inquiry on WhatsApp</button>
+    </form>
+</section>
+
+<!-- PRODUCT DETAIL MODAL POPUP -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-body">
+            <div class="modal-img-container">
+                <img id="modal-img" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title">Product Name</h2>
+                <p id="modal-price" class="modal-price">₹0</p>
+                <p id="modal-desc">Product description will go here...</p>
+                
+                <div class="modal-btn-group">
+                    <button id="modal-add-btn">Add to Bulk Cart</button>
+                    <button id="modal-sample-btn">📋 Request Paid Sample</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 40px 20px; background: #111; border-top: 1px solid #2d2d2d; color: #aaa; font-size: 13px;">
+    <!-- QUICK B2B LINKS -->
+    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 25px;">
+        <a href="about.html" style="color: #d4a373; text-decoration: none; font-weight: bold; font-size: 14px;">ℹ️ About Our Factory</a>
+        <a href="terms.html" style="color: #d4a373; text-decoration: none; font-weight: bold; font-size: 14px;">🛡️ Terms & Shipping Policy</a>
+    </div>
+    
+    <p style="margin: 10px 0 5px 0;">&copy; 2026 BaBa Handicrafts B2B Wholesale. All Rights Reserved.</p>
+    <p style="color: #666; margin: 0;">Factory Address: Aghwanpur, Moradabad, Uttar Pradesh, India</p>
+</footer>
+
+<script>
+let bulkCart = JSON.parse(localStorage.getItem("bulkCart")) || [];
+
+// Global variable modal ki quantity track karne ke liye
+let currentModalSelectId = ""; 
+
+function updateBulkCart() {
+    
+    let cartCountEl = document.getElementById("cart-count");
+    let cartItemsEl = document.getElementById("cart-items");
+    let cartTotalEl = document.getElementById("cart-total");
+
+    if (!cartCountEl || !cartItemsEl || !cartTotalEl) return;
+
+    cartCountEl.innerText = bulkCart.reduce((sum, item) => sum + item.qty, 0);
+    cartItemsEl.innerHTML = "";
+
+    let total = 0;
+
+    bulkCart.forEach((item, index) => {
+        total += item.price * item.qty;
+
+        // IS BLOCK KO updateBulkCart() FUNCTION KE ANDAR REPLACE KAR DE
+cartItemsEl.innerHTML += `
+<div style="display:flex; gap:12px; margin:12px 0; align-items: center; background:#1a1a1a; padding:10px; border-radius:8px; border: 1px solid #2d2d2d;">
+    <img src="${item.img}" width="45" height="45" style="object-fit:cover; border-radius:4px; border:1px solid #333;">
+    <div style="flex:1; font-size:13px; color: #fff;">
+        <div style="font-weight:bold; color:#d4a373; margin-bottom:4px;">${item.name}</div>
+        <div style="color:#aaa; margin-bottom:6px;">₹${item.price} × ${item.qty} Pcs</div>
+        
+        <!-- SLEEK MATCHING ACTION BUTTONS -->
+        <div style="display:flex; align-items:center; gap:6px;">
+            <button class="cart-action-btn" onclick="adjustQty(${index}, -10)">-10</button>
+            <button class="cart-action-btn" onclick="adjustQty(${index}, 10)">+10</button>
+            <button class="cart-delete-btn" onclick="removeBulkItem(${index})" title="Remove Item">Remove</button>
+        </div>
+    </div>
+</div>`;
+    });
+
+    cartTotalEl.innerText = total;
+    localStorage.setItem("bulkCart", JSON.stringify(bulkCart));
+}
+
+function addSelectedToBulkCart(name, price, selectId, img) {
+    let selectEl = document.getElementById(selectId);
+    let chosenQty = selectEl ? parseInt(selectEl.value) : 10; // Backup default 10 pieces
+
+    let existing = bulkCart.find(item => item.name === name);
+
+    if(existing) {
+        existing.qty += chosenQty;
+    } else {
+        bulkCart.push({name, price, img, qty: chosenQty});
+    }
+    
+    updateBulkCart();
+
+    // TOAST POP-UP TRIGGER
+    let toast = document.getElementById("cart-toast");
+    if(toast) {
+        toast.innerText = `🛒 ${chosenQty} Pcs - ${name} added to cart!`;
+        toast.classList.add("show");
+        
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2500);
+    }
+}
+
+function adjustQty(index, change) {
+    bulkCart[index].qty += change;
+    if(bulkCart[index].qty <= 0) {
+        bulkCart.splice(index, 1);
+    }
+    updateBulkCart();
+}
+
+function removeBulkItem(index) {
+    bulkCart.splice(index, 1);
+    updateBulkCart();
+}
+
+function sendWhatsAppBulk() {
+    if(bulkCart.length === 0){
+        alert("Wholesale cart empty hai!");
+        return;
+    }
+
+    let name = document.getElementById("cust-name").value.trim();
+    let gst = document.getElementById("cust-gst").value.trim();
+    let address = document.getElementById("cust-address").value.trim();
+
+    if(name === "" || address === ""){
+        alert("Please enter Company Name and Delivery Address.");
+        return;
+    }
+
+    let message = `*NEW B2B WHOLESALE INQUIRY*%0A%0A`;
+    message += `*Company/Buyer:* ${name}%0A`;
+    if(gst !== "") message += `*GSTIN:* ${gst}%0A`;
+    message += `*Shipping Address:* ${address}%0A%0A*Order Items:*%0A`;
+
+    bulkCart.forEach((item, index)=>{
+        message += `${index+1}. ${item.name} - Wholesale Price: ₹${item.price} × Quantity: ${item.qty} Pcs (Total: ₹${item.price * item.qty})%0A`;
+    });
+
+    let total = bulkCart.reduce((sum,item)=>sum + (item.price * item.qty), 0);
+    let shipping = total >= 9999 ? "FREE" : "₹350";
+
+    message += `%0A*Shipping:* ${shipping}`;
+    
+    if(shipping === "FREE") {
+        message += `%0A*Total Subtotal:* ₹${total}`;
+    } else {
+        message += `%0A*Total Subtotal:* ₹${total + 350} (including transport shipping)`;
+    }
+    
+    message += `%0A%0A_Note: Final taxes real bill me add honge._`;
+
+    let phone = "917900790098";
+    let url = `https://wa.me/${phone}?text=${message}`;
+    window.open(url, "_blank");
+}
+
+function toggleCart(){
+    let cartBox = document.querySelector(".cart-box");
+    if(cartBox) cartBox.classList.toggle("active");
+}
+
+function filterProducts() {
+    let input = document.getElementById('search-input').value.toLowerCase();
+    let cards = document.getElementsByClassName('product-card');
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getAttribute('data-name');
+        if (name.includes(input)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+function sendInquiry(e) {
+    e.preventDefault();
+    let name = document.getElementById("inq-name").value;
+    let msg = document.getElementById("inq-msg").value;
+    let whatsappUrl = `https://wa.me/917900790098?text=Hi, I am ${name}. Inquiry: ${msg}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+function openModal(name, price, img, desc, selectId) {
+    document.getElementById("modal-title").innerText = name;
+    document.getElementById("modal-price").innerText = "₹" + price + " / Pc";
+    document.getElementById("modal-img").src = img;
+    document.getElementById("modal-img").alt = name;
+    document.getElementById("modal-desc").innerText = desc;
+    
+    currentModalSelectId = selectId;
+
+    // 1. Bulk Cart Button setup (Jo HTML me pehle se hai)
+    let addBtn = document.getElementById("modal-add-btn");
+    if (addBtn) {
+        addBtn.onclick = function() {
+            addSelectedToBulkCart(name, price, currentModalSelectId, img);
+            closeModal();
+        };
+    }
+
+    // 2. Sample Request Button setup (Jo HTML me pehle se hai, bina naya create kiye)
+    let sampleBtn = document.getElementById("modal-sample-btn");
+    if (sampleBtn) {
+        sampleBtn.onclick = function() {
+            let sampleMessage = `*WHOLESALE SAMPLE INQUIRY*%0A%0AHi, I want to check the quality of *${name}*. Please send me 1 Sample Piece.%0A%0AI am ready to pay the retail/sample price and courier charges. Please share the details.`;
+            let whatsappUrl = `https://wa.me/917900790098?text=${sampleMessage}`;
+            window.open(whatsappUrl, '_blank');
+        };
+    }
+
+    document.getElementById("product-modal").classList.add("show");
+}
+
+function closeModal() {
+    document.getElementById("product-modal").classList.remove("show");
+}
+
+window.addEventListener("click", function(event) {
+    let modal = document.getElementById("product-modal");
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+window.onload = function() {
+    updateBulkCart();
+};
+// 1. CATEGORY FILTER LOGIC
+function filterCategory(category) {
+    // Buttons ki active class change karne ke liye
+    let buttons = document.getElementsByClassName('filter-btn');
+    for (let btn of buttons) {
+        btn.classList.remove('active');
+    }
+    event.target.classList.add('active');
+
+    // Products filter karne ke liye
+    let cards = document.getElementsByClassName('product-card');
+    for (let i = 0; i < cards.length; i++) {
+        let cardCat = cards[i].getAttribute('data-category') || '';
+        if (category === 'all' || cardCat.includes(category)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+// 2. UPDATED QUANTITY & MINIMUM ORDER LOCK IN WHATSAPP FUNCTION
+// Puraane sendWhatsAppBulk() ko isse replace kar dena
+function sendWhatsAppBulk() {
+    if(bulkCart.length === 0){
+        alert("Wholesale cart empty hai!");
+        return;
+    }
+
+    let total = bulkCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    
+    // 🔥 ₹5000 KA MINIMUM WHOLESALE LOCK
+    if (total < 5000) {
+        alert(`Wholesale order ka minimum total ₹5,000 hona chahiye. Aapka abhi ₹${total} hai. Kripya quantity badhayein!`);
+        return;
+    }
+
+    let name = document.getElementById("cust-name").value.trim();
+    let gst = document.getElementById("cust-gst").value.trim();
+    let address = document.getElementById("cust-address").value.trim();
+
+    if(name === "" || address === ""){
+        alert("Please enter Company Name and Delivery Address.");
+        return;
+    }
+
+    let message = `*NEW B2B WHOLESALE INQUIRY*%0A%0A`;
+    message += `*Company/Buyer:* ${name}%0A`;
+    if(gst !== "") message += `*GSTIN:* ${gst}%0A`;
+    message += `*Shipping Address:* ${address}%0A%0A*Order Items:*%0A`;
+
+    bulkCart.forEach((item, index)=>{
+        message += `${index+1}. ${item.name} - Wholesale Price: ₹${item.price} × Quantity: ${item.qty} Pcs (Total: ₹${item.price * item.qty})%0A`;
+    });
+
+    let shipping = total >= 9999 ? "FREE" : "₹350";
+    message += `%0A*Shipping:* ${shipping}`;
+    
+    if(shipping === "FREE") {
+        message += `%0A*Total Subtotal:* ₹${total}`;
+    } else {
+        message += `%0A*Total Subtotal:* ₹${total + 350} (including transport shipping)`;
+    }
+    
+    message += `%0A%0A_Note: Final taxes real bill me add honge._`;
+
+    let phone = "917900790098";
+    let url = `https://wa.me/${phone}?text=${message}`;
+    window.open(url, "_blank");
+}
+
+
+</script>
+<div id="cart-toast" class="cart-toast">
+    🛒 Item Added to Bulk Cart!
+</div>
+<div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+    
+    <div style="background: #111; border: 1px solid #d4a373; width: 100%; max-width: 380px; padding: 35px 25px; border-radius: 12px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: left;">
+        
+        <button onclick="closeLoginModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #666; font-size: 20px; cursor: pointer; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#666'">✕</button>
+        
+        <h3 style="color: #d4a373; margin: 0 0 5px 0; font-size: 22px; font-weight: bold;">BaBa Handicrafts</h3>
+        <p style="color: #666; font-size: 13px; margin: 0 0 25px 0;">Wholesale B2B Buyer Verification</p>
+        
+        <div id="login-step-1">
+            <label style="display: block; color: #aaa; font-size: 13px; margin-bottom: 8px; font-weight: bold;">Enter Mobile Number</label>
+            <div style="display: flex; gap: 8px; margin-bottom: 20px;">
+                <span style="background: #222; border: 1px solid #2d2d2d; color: #777; padding: 12px; border-radius: 6px; font-size: 14px; font-weight: bold;">+91</span>
+                <input type="tel" id="user-phone" placeholder="10-digit mobile number" maxlength="10" style="flex: 1; background: #000; border: 1px solid #2d2d2d; color: #fff; padding: 12px; border-radius: 6px; font-size: 15px; outline: none; transition: 0.3s;" onfocus="this.style.borderColor='#d4a373'">
+            </div>
+            <button onclick="requestOTP()" style="width: 100%; background: #d4a373; color: #000; border: none; padding: 12px 0; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#d4a373'">Continue</button>
+        </div>
+
+        <div id="login-step-2" style="display: none;">
+            <p style="color: #aaa; font-size: 13px; margin: 0 0 15px 0;">We have sent a 4-digit verification code to your number.</p>
+            <label style="display: block; color: #aaa; font-size: 13px; margin-bottom: 8px; font-weight: bold;">Enter OTP</label>
+            <input type="text" id="user-otp" placeholder="Enter 4-Digit OTP" maxlength="4" style="width: 100%; background: #000; border: 1px solid #2d2d2d; color: #fff; padding: 12px; border-radius: 6px; font-size: 16px; letter-spacing: 5px; text-align: center; outline: none; margin-bottom: 20px; box-sizing: border-box;" onfocus="this.style.borderColor='#d4a373'">
+            
+            <button onclick="verifyOTP()" style="width: 100%; background: #d4a373; color: #000; border: none; padding: 12px 0; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#d4a373'">Verify & Sign In</button>
+        </div>
+
+        <p style="color: #555; font-size: 11px; margin-top: 20px; line-height: 1.4; text-align: center;">
+            By continuing, you agree to BaBa Handicrafts' <a href="terms.html" style="color: #d4a373; text-decoration: none;">Wholesale Terms</a>.
+        </p>
+    </div>
+</div>
+
+<script>
+function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
+    document.getElementById('login-step-1').style.display = 'block';
+    document.getElementById('login-step-2').style.display = 'none';
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+function requestOTP() {
+    const phone = document.getElementById('user-phone').value;
+    if(phone.length !== 10 || isNaN(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+    }
+    // Simulation logic to go to next step
+    document.getElementById('login-step-1').style.display = 'none';
+    document.getElementById('login-step-2').style.display = 'block';
+    // Developer Demo purpose Alert box (In backend real system send via SMS gateway)
+    alert("Demo Security OTP Code for test: 1234");
+}
+
+function verifyOTP() {
+    const otp = document.getElementById('user-otp').value;
+    if(otp === "1234") {
+        alert("Verification Successful! Welcome back.");
+        closeLoginModal();
+        
+        let loginBtn = document.getElementById('nav-login-btn');
+        
+        // Agar ID se nahi mila, toh pure page par text se dhoondega
+        if (!loginBtn) {
+            const buttons = document.getElementsByTagName('button');
+            for (let btn of buttons) {
+                if (btn.innerText.includes("Login / Sign Up")) {
+                    loginBtn = btn;
+                    break;
+                }
+            }
+        }
+        
+        // Ab wahan sirf single elegant logo design print hoga
+        if (loginBtn) {
+            const parentLi = loginBtn.parentElement;
+            parentLi.innerHTML = `
+                <div style="background: #d4a373; color: #000; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 16px; font-weight: bold; box-shadow: 0 0 12px rgba(212, 163, 115, 0.4); cursor: pointer; border: 1px solid #fff;" title="Your Profile">
+                    👤
+                </div>
+            `;
+        }
+    } else {
+        alert("Invalid OTP Code! Please try again using code 1234.");
+    }
+}
+</script>
+</body>
+</html>
