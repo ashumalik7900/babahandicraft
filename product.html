@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Product Details | BaBa Handicrafts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Premium Matte Dark Theme */
+        html, body {
+            background-color: #0d0d0d !important;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .product-detail-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        /* Left Side: Premium Image Container */
+        .product-img-side {
+            flex: 1;
+            min-width: 320px;
+            background: #111;
+            border: 1px solid #2d2d2d;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .img-wrapper {
+            overflow: hidden;
+            border-radius: 6px;
+            background: #000;
+        }
+
+        .product-img-side img {
+            max-width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* Image Zoom on Hover */
+        .product-img-side img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Right Side: Info Panel */
+        .product-info-side {
+            flex: 1;
+            min-width: 320px;
+            background: #111;
+            border: 1px solid #2d2d2d;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .product-title {
+            color: #d4a373;
+            font-size: 30px;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+
+        .factory-tag {
+            display: inline-block;
+            background: rgba(212, 163, 115, 0.1);
+            color: #d4a373;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .product-price {
+            font-size: 26px;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .moq-text {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        /* Spec List Grid */
+        .spec-list {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            border-top: 1px solid #2d2d2d;
+            border-bottom: 1px solid #2d2d2d;
+            padding: 20px 0;
+        }
+
+        .spec-list li {
+            font-size: 13px;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Quantity Box Styling */
+        .qty-box {
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .qty-label {
+            font-weight: bold;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .qty-control-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d4a373;
+            border-radius: 6px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .qty-btn-adjust {
+            background: #1a1a1a;
+            color: #d4a373;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .qty-btn-adjust:hover {
+            background: #d4a373;
+            color: #000;
+        }
+
+        .qty-input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Remove browser spin buttons */
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .add-to-cart-btn {
+            display: block;
+            width: 100%;
+            background: #d4a373;
+            color: #000;
+            padding: 15px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.2);
+        }
+
+        .add-to-cart-btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .product-detail-container { margin: 20px auto; gap: 25px; }
+            .product-info-side { padding: 20px; }
+            .spec-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="announcement-bar">
+    <span>✨ Directly From Pital Nagri: High-Gloss Polish & Heavy Export Finish ✨</span>
+</div>
+
+<header>
+    <nav>
+        <h1>BaBa Handicrafts <span>B2B Wholesale</span></h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#bulk-products">Wholesale Catalog</a></li>
+            <li><a href="index.html#inquiry-section">Inquiry</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="product-detail-container">
+    
+    <div class="product-img-side">
+        <div class="img-wrapper">
+            <img id="detail-img" src="" alt="Wholesale Product">
+        </div>
+    </div>
+    
+    <div class="product-info-side">
+        <span class="factory-tag">🏭 Direct Factory Rate</span>
+        <h2 id="detail-title" class="product-title">Product Name</h2>
+        <div id="detail-price" class="product-price">₹0</div>
+        <div class="moq-text">Excluding GST & Transport Freight (To-Pay Basis)</div>
+        
+        <p style="color: #999; line-height: 1.6; font-size: 14px; margin: 0 0 20px 0;">
+            Authentic handcrafted article directly from our manufacturing unit in Moradabad. Engineered using traditional sand-casting and precise chemical buffing techniques to ensure a brilliant royal shine and long-lasting anti-tarnish durability. Ideal for premium corporate gifting and high-end retail inventories.
+        </p>
+        
+        <ul class="spec-list">
+            <li>🛡️ Anti-Tarnish Layer</li>
+            <li>✨ Premium Buff Finish</li>
+            <li>🇮🇳 100% Handcrafted</li>
+            <li>📦 Solid Master Box Packing</li>
+        </ul>
+        
+        <div class="qty-box">
+            <span class="qty-label">Order Quantity (Pcs):</span>
+            <div class="qty-control-wrapper">
+                <button class="qty-btn-adjust" onclick="changeQty(-10)">-</button>
+                <input type="number" id="detail-qty" class="qty-input" value="10" min="10" readonly>
+                <button class="qty-btn-adjust" onclick="changeQty(10)">+</button>
+            </div>
+        </div>
+        
+        <button class="add-to-cart-btn" onclick="addToCartAndRedirect()">🛒 Add To Cart & View Invoice</button>
+    </div>
+</div>
+
+<footer style="text-align: center; padding: 40px 20px; background: #111; border-top: 1px solid #2d2d2d; color: #aaa; font-size: 13px; margin-top: 60px;">
+    <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+        <a href="about.html" style="color: #d4a373; text-decoration: none; font-weight: bold;">ℹ️ About Our Factory</a>
+        <a href="gallery.html" style="color: #d4a373; text-decoration: none; font-weight: bold;">📸 Production Gallery</a>
+        <a href="terms.html" style="color: #d4a373; text-decoration: none; font-weight: bold;">🛡️ Terms & Shipping Policy</a>
+    </div>
+    <p>&copy; 2026 BaBa Handicrafts B2B Wholesale. All Rights Reserved.</p>
+</footer>
+
+<script>
+// URL data loader
+const urlParams = new URLSearchParams(window.location.search);
+const pName = urlParams.get('name') || "Handicraft Item";
+const pPrice = parseInt(urlParams.get('price')) || 0;
+const pImg = urlParams.get('img') || "product1.jpg";
+
+document.getElementById('detail-title').innerText = pName;
+document.getElementById('detail-price').innerText = `₹${pPrice} / Piece`;
+document.getElementById('detail-img').src = pImg;
+
+// Plus/Minus wholesale lot functions (+10, -10 batches)
+function changeQty(amount) {
+    const qtyInput = document.getElementById('detail-qty');
+    let currentVal = parseInt(qtyInput.value) || 10;
+    currentVal += amount;
+    if(currentVal < 10) currentVal = 10; // Wholesale threshold lock
+    qtyInput.value = currentVal;
+}
+
+function addToCartAndRedirect() {
+    const qty = parseInt(document.getElementById('detail-qty').value) || 10;
+    let currentCart = JSON.parse(localStorage.getItem('b2b_cart')) || [];
+    let existingItem = currentCart.find(item => item.name === pName);
+    
+    if(existingItem) {
+        existingItem.quantity += qty;
+    } else {
+        currentCart.push({
+            name: pName,
+            price: pPrice,
+            image: pImg,
+            quantity: qty
+        });
+    }
+    
+    localStorage.setItem('b2b_cart', JSON.stringify(currentCart));
+    window.location.href = "cart.html";
+}
+</script>
+
+</body>
+</html>
